@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Logo from "./Logo";
 import CTAButton from "./CTAButton";
+import { usePagina } from "@/lib/pagina";
 
 const navItems = [
   { label: "Início", href: "#inicio" },
@@ -16,6 +17,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const { entrar } = usePagina();
 
   useEffect(() => {
     const onScroll = () => {
@@ -62,7 +64,15 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-2 lg:flex">
+            {entrar && (
+              <a
+                href={entrar}
+                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/75 transition-colors hover:bg-muted hover:text-foreground"
+              >
+                Entrar
+              </a>
+            )}
             <CTAButton size="sm" className="group">
               Quero conhecer
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -99,6 +109,14 @@ export default function Header() {
                   {item.label}
                 </a>
               ))}
+              {entrar && (
+                <a
+                  href={entrar}
+                  className="rounded-xl px-4 py-3 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted"
+                >
+                  Entrar no sistema
+                </a>
+              )}
             </nav>
             <CTAButton
               size="md"

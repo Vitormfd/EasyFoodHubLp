@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { whatsappLink } from "@/lib/siteConfig";
+import { usePagina } from "@/lib/pagina";
 
 const variants = {
   primary:
@@ -20,17 +21,19 @@ const sizes = {
 /**
  * Botão de CTA. Por padrão abre o WhatsApp do Easy Food Hub.
  * Use `to` para um link interno/externo, ou `whatsapp` com mensagem custom.
+ * Sem `whatsapp`, usa a mensagem da página (build de SEO) ou a padrão.
  */
 export default function CTAButton({
   children,
   variant = "primary",
   size = "md",
   to,
-  whatsapp = "Olá! Quero conhecer o Easy Food Hub.",
+  whatsapp,
   className,
   ...props
 }) {
-  const href = to ?? whatsappLink(whatsapp);
+  const pagina = usePagina();
+  const href = to ?? whatsappLink(whatsapp ?? pagina.whatsapp ?? "Olá! Quero conhecer o Easy Food Hub.");
   return (
     <a
       href={href}

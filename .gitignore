@@ -30,3 +30,6 @@ dist-ssr
 .env
 .vite
 base44/.app.jsonc
+
+# build de SEO (npm run build:seo)
+dist-seo

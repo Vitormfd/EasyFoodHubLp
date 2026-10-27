@@ -9,8 +9,9 @@ import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import CTAButton from "./CTAButton";
 import { ArrowRight } from "lucide-react";
+import { usePagina } from "@/lib/pagina";
 
-const faqs = [
+export const FAQS_PADRAO = [
   {
     q: "Preciso instalar alguma coisa?",
     a: "Não. O Easy Food Hub é um sistema online, acessado pelo navegador. Você não precisa instalar programas no computador ou no celular.",
@@ -54,6 +55,8 @@ const faqs = [
 ];
 
 export default function FAQ() {
+  const pagina = usePagina();
+  const faqs = [...(pagina.faq || []), ...FAQS_PADRAO];
   return (
     <section id="faq" className="relative bg-muted/40 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

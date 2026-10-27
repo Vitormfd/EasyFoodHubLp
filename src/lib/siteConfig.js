@@ -21,10 +21,11 @@ export function whatsappLink(message = "Olá! Quero conhecer o Easy Food Hub.") 
   return `https://wa.me/${site.whatsappNumber}?text=${text}`;
 }
 
-// Links de contratação — substitua pelos links de pagamento reais
+// Links de contratação — substitua pelos links de pagamento reais quando existirem.
+// Enquanto isso, levam ao WhatsApp com a mensagem do plano escolhido.
 export const checkoutLinks = {
-  easyFoodHub: "#checkout-easy-food-hub",
-  easyFoodHubWhatsapp: "#checkout-easy-food-hub-whatsapp",
+  easyFoodHub: whatsappLink("Olá! Quero contratar o plano Easy Food Hub."),
+  easyFoodHubWhatsapp: whatsappLink("Olá! Quero contratar o plano Easy Food Hub + WhatsApp."),
 };
 
 // -------------------------------------------------------------

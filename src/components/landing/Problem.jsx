@@ -2,8 +2,9 @@ import React from "react";
 import { Check, X } from "lucide-react";
 import Reveal from "./Reveal";
 import { cn } from "@/lib/utils";
+import { usePagina } from "@/lib/pagina";
 
-const problems = [
+const PROBLEMAS_PADRAO = [
   "Pedidos anotados manualmente",
   "Erros nos pedidos",
   "Pedidos espalhados pelo WhatsApp",
@@ -15,6 +16,7 @@ const problems = [
 ];
 
 export default function Problem() {
+  const problems = usePagina().dores || PROBLEMAS_PADRAO;
   return (
     <section className="relative overflow-hidden bg-deep py-24 text-deep-foreground sm:py-32">
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-30">

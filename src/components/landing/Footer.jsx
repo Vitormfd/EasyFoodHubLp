@@ -2,6 +2,7 @@ import React from "react";
 import { Instagram, MessageCircle, Mail } from "lucide-react";
 import Logo from "./Logo";
 import { site, whatsappLink } from "@/lib/siteConfig";
+import { usePagina } from "@/lib/pagina";
 
 const cols = [
   {
@@ -33,10 +34,27 @@ const cols = [
 ];
 
 export default function Footer() {
+  const { nichos = [], entrar } = usePagina();
+  // No build de SEO, o rodapé ganha a coluna com as páginas de cada tipo de negócio.
+  const colunas = nichos.length
+    ? [
+        {
+          title: "Soluções",
+          links: [
+            ...nichos.map((n) => ({ label: n.titulo || n.label, href: n.href })),
+            ...(entrar ? [{ label: "Entrar no sistema", href: entrar }] : []),
+          ],
+        },
+        ...cols,
+      ]
+    : cols;
   return (
     <footer className="relative border-t border-border bg-card">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div
+          className="grid gap-10 lg:grid-cols-[1.4fr_repeat(var(--colunas),1fr)]"
+          style={{ "--colunas": colunas.length }}
+        >
           {/* Marca */}
           <div className="flex flex-col gap-4">
             <Logo showTagline />
@@ -74,7 +92,7 @@ export default function Footer() {
           </div>
 
           {/* Colunas de links */}
-          {cols.map((col) => (
+          {colunas.map((col) => (
             <div key={col.title} className="flex flex-col gap-3">
               <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground">
                 {col.title}
