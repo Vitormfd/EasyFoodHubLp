@@ -3,7 +3,9 @@
 // Regra dos textos: só recursos que existem no Easy Food Hub, sem preço e sem promessa de resultado.
 
 export const SITE = "https://www.easyfoodhub.com.br";
-export const ENTRAR = "/auth";
+// Sem link "Entrar": o cadastro do sistema é aberto e ainda não há cobrança, então a
+// landing não leva ninguém para a tela de login/cadastro. Para religar, use "/auth".
+export const ENTRAR = null;
 
 export const paginas = [
   {

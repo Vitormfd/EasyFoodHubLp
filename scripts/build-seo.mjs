@@ -67,7 +67,7 @@ function html(p) {
   const pagina = {
     ...Object.fromEntries(["selo", "h1", "sub", "whatsapp", "dores", "faq"].filter((k) => p[k]).map((k) => [k, p[k]])),
     nichos: nichos.map((n) => ({ ...n, atual: n.href === `/${p.slug}` })),
-    entrar: ENTRAR,
+    ...(ENTRAR ? { entrar: ENTRAR } : {}),
   };
   const schema = {
     "@context": "https://schema.org",
