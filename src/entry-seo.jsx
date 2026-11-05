@@ -3,7 +3,10 @@
 import { hydrateRoot } from "react-dom/client";
 import Landing from "@/pages/Landing";
 import { PaginaProvider } from "@/lib/pagina";
+import { ligarRastreamento } from "@/lib/rastreamento";
 import "@/index.css";
+
+ligarRastreamento();
 
 const dados = document.getElementById("pagina-dados");
 const pagina = dados ? JSON.parse(dados.textContent) : null;

@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import Reveal from "./Reveal";
 import CTAButton from "./CTAButton";
-import { images } from "@/lib/siteConfig";
+import { images, OFERTA_TESTE } from "@/lib/siteConfig";
 import { BrowserMockup } from "./DeviceMockup";
 
 export default function FinalCTA() {
@@ -45,13 +45,13 @@ export default function FinalCTA() {
           <Reveal delay={160}>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
               Conheça o Easy Food Hub e descubra como centralizar pedidos,
-              atendimento, delivery e gestão em um único sistema.
+              atendimento, delivery e gestão em um único sistema. {OFERTA_TESTE}
             </p>
           </Reveal>
 
           <Reveal delay={240} className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <CTAButton variant="dark" size="lg" className="group">
-              Quero conhecer o Easy Food Hub
+            <CTAButton variant="dark" size="lg" className="group" cadastro>
+              Testar 7 dias grátis
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </CTAButton>
             <CTAButton variant="primary" size="lg">

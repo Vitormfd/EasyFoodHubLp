@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { whatsappLink } from "@/lib/siteConfig";
+import { CADASTRO_URL, whatsappLink } from "@/lib/siteConfig";
 import { usePagina } from "@/lib/pagina";
 
 const variants = {
@@ -20,6 +20,7 @@ const sizes = {
 
 /**
  * Botão de CTA. Por padrão abre o WhatsApp do Easy Food Hub.
+ * Use `cadastro` para abrir a criação de conta, na mesma aba.
  * Use `to` para um link interno/externo, ou `whatsapp` com mensagem custom.
  * Sem `whatsapp`, usa a mensagem da página (build de SEO) ou a padrão.
  */
@@ -29,16 +30,20 @@ export default function CTAButton({
   size = "md",
   to,
   whatsapp,
+  cadastro = false,
   className,
   ...props
 }) {
   const pagina = usePagina();
-  const href = to ?? whatsappLink(whatsapp ?? pagina.whatsapp ?? "Olá! Quero conhecer o Easy Food Hub.");
+  const href = cadastro
+    ? CADASTRO_URL
+    : to ?? whatsappLink(whatsapp ?? pagina.whatsapp ?? "Olá! Quero conhecer o Easy Food Hub.");
+  const outraAba = !cadastro && href.startsWith("http");
   return (
     <a
       href={href}
-      target={href.startsWith("http") ? "_blank" : undefined}
-      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+      target={outraAba ? "_blank" : undefined}
+      rel={outraAba ? "noopener noreferrer" : undefined}
       className={cn(
         "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
         variants[variant],

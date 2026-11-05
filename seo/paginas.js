@@ -1,11 +1,14 @@
 // Páginas geradas pelo build de SEO (npm run build:seo). Cada uma é a mesma landing,
 // mirando uma busca do Google. A principal (sistema-para-restaurante) é a landing sem mudanças.
-// Regra dos textos: só recursos que existem no Easy Food Hub, sem preço e sem promessa de resultado.
+// Regra dos textos: só recursos que existem no Easy Food Hub e sem promessa de resultado. O preço
+// fica em um lugar só: src/lib/siteConfig.js.
 
 export const SITE = "https://www.easyfoodhub.com.br";
-// Sem link "Entrar": o cadastro do sistema é aberto e ainda não há cobrança, então a
-// landing não leva ninguém para a tela de login/cadastro. Para religar, use "/auth".
-export const ENTRAR = null;
+export const ENTRAR = "/auth";
+
+// Pixel "Easy Food Hub" do Meta (negócio Easy System). O ID é público. O trecho só dispara no
+// domínio easyfoodhub.com.br. A variável de ambiente META_PIXEL_ID tem prioridade (testes).
+export const META_PIXEL_ID = "1628835118137335";
 
 export const paginas = [
   {

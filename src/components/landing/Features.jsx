@@ -119,7 +119,7 @@ export default function Features() {
 
         <Reveal className="mt-12 flex justify-center">
           <CTAButton variant="outline" to="#planos" className="group">
-            Ver planos
+            Ver preço
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </CTAButton>
         </Reveal>

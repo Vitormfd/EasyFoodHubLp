@@ -21,30 +21,29 @@ export function whatsappLink(message = "Olá! Quero conhecer o Easy Food Hub.") 
   return `https://wa.me/${site.whatsappNumber}?text=${text}`;
 }
 
-// Links de contratação — substitua pelos links de pagamento reais quando existirem.
-// Enquanto isso, levam ao WhatsApp com a mensagem do plano escolhido.
-export const checkoutLinks = {
-  easyFoodHub: whatsappLink("Olá! Quero contratar o plano Easy Food Hub."),
-  easyFoodHubWhatsapp: whatsappLink("Olá! Quero contratar o plano Easy Food Hub + WhatsApp."),
-};
+// Cadastro e páginas legais ficam no sistema, no mesmo domínio das páginas geradas.
+const SISTEMA = "https://www.easyfoodhub.com.br";
+export const CADASTRO_URL = `${SISTEMA}/auth?mode=signup`;
+export const PRIVACIDADE_URL = `${SISTEMA}/privacidade`;
+export const TERMOS_URL = `${SISTEMA}/termos`;
+
+export const PRECO = "R$ 199/mês";
+export const OFERTA_TESTE = `7 dias grátis, sem cartão. Depois, ${PRECO}.`;
 
 // -------------------------------------------------------------
-//  PLANOS
-//  Os preços são placeholders fáceis de substituir.
-//  Defina `price` quando o valor definitivo estiver disponível.
+//  PLANO
+//  O sistema tem um preço só (src/lib/assinatura.ts no Burguer Hub, link da Stripe).
 // -------------------------------------------------------------
 
 export const plans = [
   {
     id: "easy-food-hub",
     name: "Easy Food Hub",
-    tagline: "Sistema completo para a gestão do seu estabelecimento.",
-    price: null, // ex.: "R$ 149/mês" — substitua quando definido
-    priceNote: "Consulte condições comerciais",
-    highlighted: false,
-    ctaLabel: "Quero contratar",
-    ctaHref: checkoutLinks.easyFoodHub,
-    ctaVariant: "outline",
+    tagline: "Sistema completo para o seu estabelecimento, com a automação do WhatsApp incluída na assinatura.",
+    price: PRECO,
+    priceNote: "Comece com 7 dias grátis, sem cartão. Automação do WhatsApp e marketing entram com a assinatura.",
+    highlighted: true,
+    ctaLabel: "Testar 7 dias grátis",
     features: [
       "Gestão de pedidos centralizada",
       "Controle de mesas e atendimentos",
@@ -53,26 +52,12 @@ export const plans = [
       "Cadastro de clientes",
       "Criação de promoções",
       "Mensagens automáticas",
-      "Suporte e implantação assistida",
-    ],
-  },
-  {
-    id: "easy-food-hub-whatsapp",
-    name: "Easy Food Hub + WhatsApp",
-    tagline: "Tudo do plano anterior + automação de pedidos pelo WhatsApp.",
-    price: null, // ex.: "R$ 249/mês" — substitua quando definido
-    priceNote: "Consulte condições comerciais",
-    highlighted: true,
-    ctaLabel: "Quero automatizar meu atendimento",
-    ctaHref: checkoutLinks.easyFoodHubWhatsapp,
-    ctaVariant: "primary",
-    features: [
-      "Tudo do plano Easy Food Hub",
       "Atendimento automático pelo WhatsApp",
       "Fluxo guiado de pedidos (produto → adicionais → bebida → pagamento → entrega)",
       "Respostas automáticas nos horários de pico",
       "Menos trabalho manual no atendimento",
       "Integração do cardápio no WhatsApp",
+      "Suporte pelo WhatsApp",
     ],
   },
 ];

@@ -9,7 +9,7 @@ const navItems = [
   { label: "Início", href: "#inicio" },
   { label: "Recursos", href: "#recursos" },
   { label: "Como funciona", href: "#como-funciona" },
-  { label: "Planos", href: "#planos" },
+  { label: "Preço", href: "#planos" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -73,8 +73,8 @@ export default function Header() {
                 Entrar
               </a>
             )}
-            <CTAButton size="sm" className="group">
-              Quero conhecer
+            <CTAButton size="sm" className="group" cadastro>
+              Testar grátis
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </CTAButton>
           </div>
@@ -121,9 +121,10 @@ export default function Header() {
             <CTAButton
               size="md"
               className="mt-3 w-full"
+              cadastro
               onClick={() => setOpen(false)}
             >
-              Quero conhecer
+              Testar grátis
               <ArrowRight className="h-4 w-4" />
             </CTAButton>
           </div>

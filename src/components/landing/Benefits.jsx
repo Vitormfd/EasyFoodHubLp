@@ -14,8 +14,8 @@ import SectionHeading from "./SectionHeading";
 
 const benefits = [
   { icon: Layers, text: "Centralize sua operação" },
-  { icon: ShieldCheck, text: "Reduza erros nos pedidos" },
-  { icon: Zap, text: "Ganhe velocidade no atendimento" },
+  { icon: ShieldCheck, text: "Cada pedido registrado com seus detalhes" },
+  { icon: Zap, text: "Atendimento mais organizado" },
   { icon: Bike, text: "Organize seu delivery" },
   { icon: Smartphone, text: "Facilite os pedidos dos clientes" },
   { icon: Bot, text: "Automatize tarefas repetitivas" },

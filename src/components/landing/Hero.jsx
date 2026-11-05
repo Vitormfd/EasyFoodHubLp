@@ -1,9 +1,9 @@
 import React from "react";
-import { ArrowRight, Play, Smartphone, UtensilsCrossed, LayoutGrid, Bike, MessageCircle } from "lucide-react";
+import { ArrowRight, Smartphone, UtensilsCrossed, LayoutGrid, Bike, MessageCircle } from "lucide-react";
 import CTAButton from "./CTAButton";
 import Reveal from "./Reveal";
 import { BrowserMockup } from "./DeviceMockup";
-import { images } from "@/lib/siteConfig";
+import { images, OFERTA_TESTE } from "@/lib/siteConfig";
 import { usePagina } from "@/lib/pagina";
 
 const trustItems = [
@@ -59,14 +59,18 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={240} className="flex flex-col gap-3 sm:flex-row">
-            <CTAButton size="lg" className="group">
-              Quero conhecer o Easy Food Hub
+            <CTAButton size="lg" className="group" cadastro>
+              Testar 7 dias grátis
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </CTAButton>
-            <CTAButton size="lg" variant="outline" to="#como-funciona">
-              <Play className="h-4 w-4" />
-              Ver como funciona
+            <CTAButton size="lg" variant="outline">
+              <MessageCircle className="h-4 w-4" />
+              Falar no WhatsApp
             </CTAButton>
+          </Reveal>
+
+          <Reveal delay={280}>
+            <p className="-mt-3 text-sm font-medium text-foreground/70">{OFERTA_TESTE}</p>
           </Reveal>
 
           <Reveal delay={320}>

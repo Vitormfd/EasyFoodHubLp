@@ -49,7 +49,20 @@ await build({
 // utils.js lê window.self/window.top ao carregar; no Node não há window.
 globalThis.window ??= { self: 1, top: 1 };
 const { render, faqsDa } = await import(pathToFileURL(join(tmp, "server", "entry-server.js")).href);
-const { SITE, ENTRAR, paginas } = await import(pathToFileURL(join(raiz, "seo", "paginas.js")).href);
+const { SITE, ENTRAR, META_PIXEL_ID, paginas } = await import(pathToFileURL(join(raiz, "seo", "paginas.js")).href);
+
+const idPixel = (process.env.META_PIXEL_ID || META_PIXEL_ID || "").trim();
+if (idPixel && !/^\d+$/.test(idPixel)) throw new Error("META_PIXEL_ID precisa ter só números");
+if (!idPixel) console.warn("AVISO: sem ID do pixel do Meta. As páginas saem sem rastreamento.");
+
+// autoConfig desligado: o Meta não captura cliques e campos de formulário sozinho.
+// Com o ID de seo/paginas.js, só dispara no domínio de produção (prévias da Vercel não contam);
+// com META_PIXEL_ID no ambiente (testes), dispara em qualquer endereço.
+const soProducao = !process.env.META_PIXEL_ID;
+const trechoPixel = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('set','autoConfig',false,'${idPixel}');fbq('init','${idPixel}');fbq('track','PageView');`;
+const pixel = idPixel
+  ? `<script>${soProducao ? `if(/(^|\\.)easyfoodhub\\.com\\.br$/.test(location.hostname)){${trechoPixel}}` : trechoPixel}</script>`
+  : "";
 
 const manifesto = JSON.parse(readFileSync(join(tmp, "client", ".vite", "manifest.json"), "utf8"));
 const entrada = manifesto["src/entry-seo.jsx"];
@@ -81,6 +94,7 @@ function html(p) {
         url,
         image: IMAGEM,
         publisher: { "@type": "Organization", name: "Easy System" },
+        offers: { "@type": "Offer", price: "199.00", priceCurrency: "BRL" },
       },
       {
         "@type": "FAQPage",
@@ -119,6 +133,7 @@ function html(p) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 ${css}
+${pixel}
 <script type="application/ld+json">${json(schema)}</script>
 </head>
 <body>

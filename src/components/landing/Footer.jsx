@@ -1,7 +1,7 @@
 import React from "react";
 import { Instagram, MessageCircle, Mail } from "lucide-react";
 import Logo from "./Logo";
-import { site, whatsappLink } from "@/lib/siteConfig";
+import { PRIVACIDADE_URL, site, TERMOS_URL, whatsappLink } from "@/lib/siteConfig";
 import { usePagina } from "@/lib/pagina";
 
 const cols = [
@@ -11,7 +11,7 @@ const cols = [
       { label: "Início", href: "#inicio" },
       { label: "Recursos", href: "#recursos" },
       { label: "Como funciona", href: "#como-funciona" },
-      { label: "Planos", href: "#planos" },
+      { label: "Preço", href: "#planos" },
       { label: "FAQ", href: "#faq" },
     ],
   },
@@ -26,8 +26,8 @@ const cols = [
   {
     title: "Legal",
     links: [
-      { label: "Política de Privacidade", href: "#politica-de-privacidade" },
-      { label: "Termos de Uso", href: "#termos-de-uso" },
+      { label: "Política de Privacidade", href: PRIVACIDADE_URL },
+      { label: "Termos de Uso", href: TERMOS_URL },
       { label: "Contato", href: whatsappLink("Olá! Preciso de atendimento."), external: true },
     ],
   },

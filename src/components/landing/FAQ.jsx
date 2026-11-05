@@ -13,6 +13,14 @@ import { usePagina } from "@/lib/pagina";
 
 export const FAQS_PADRAO = [
   {
+    q: "Quanto custa o Easy Food Hub?",
+    a: "R$ 199 por mês, em um plano só. Você testa por 7 dias antes, sem cartão, e a cobrança só começa se assinar.",
+  },
+  {
+    q: "Como funciona o teste grátis?",
+    a: "Você cria a conta, monta o cardápio e recebe pedidos de verdade por 7 dias, com mesas e cardápio online liberados. A automação do WhatsApp e o marketing entram com a assinatura. Se não assinar, os pedidos param ao fim do teste e seus dados continuam guardados.",
+  },
+  {
     q: "Preciso instalar alguma coisa?",
     a: "Não. O Easy Food Hub é um sistema online, acessado pelo navegador. Você não precisa instalar programas no computador ou no celular.",
   },
@@ -38,15 +46,15 @@ export const FAQS_PADRAO = [
   },
   {
     q: "Como funciona a automação pelo WhatsApp?",
-    a: "O cliente inicia o atendimento pelo WhatsApp e é conduzido automaticamente pelo fluxo do pedido: produto, adicionais, bebida, pagamento, endereço e confirmação. A automação pode depender do plano contratado.",
+    a: "O cliente inicia o atendimento pelo WhatsApp e é conduzido automaticamente pelo fluxo do pedido: produto, adicionais, bebida, pagamento, endereço e confirmação. A automação faz parte da assinatura e não entra no teste grátis.",
   },
   {
     q: "Posso cadastrar adicionais nos produtos?",
     a: "Sim. Você pode cadastrar adicionais e opções extras para cada produto do cardápio.",
   },
   {
-    q: "Como funciona a implantação?",
-    a: "A implantação é assistida pela nossa equipe, com cadastro dos seus produtos, mesas e informações do estabelecimento para você começar a usar.",
+    q: "Como começo a usar?",
+    a: "Você mesmo cadastra seus produtos, mesas e as informações do estabelecimento, e o sistema mostra o passo a passo até o primeiro pedido. Se tiver dúvida, nossa equipe ajuda pelo WhatsApp.",
   },
   {
     q: "Vocês oferecem suporte?",

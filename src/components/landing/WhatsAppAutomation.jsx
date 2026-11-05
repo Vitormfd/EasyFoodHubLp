@@ -127,7 +127,7 @@ export default function WhatsAppAutomation() {
 
             <Reveal delay={280} className="mt-6">
               <p className="text-xs text-muted-foreground">
-                * A automação pelo WhatsApp pode depender do plano contratado.
+                * A automação pelo WhatsApp faz parte da assinatura e não entra no teste grátis.
               </p>
             </Reveal>
           </div>
