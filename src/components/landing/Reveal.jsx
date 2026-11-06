@@ -4,19 +4,23 @@ import { cn } from "@/lib/utils";
 /**
  * Revela o conteúdo suavemente quando entra na viewport.
  * Usa IntersectionObserver — leve e performático.
+ * `imediato`: já nasce visível no HTML (topo da página). Quem chega pelo anúncio vê o texto
+ * antes de o JavaScript carregar, em vez de uma área em branco.
  */
 export default function Reveal({
   as: Tag = "div",
   className,
   delay = 0,
   once = true,
+  imediato = false,
   children,
   ...props
 }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(imediato);
 
   useEffect(() => {
+    if (imediato) return;
     const node = ref.current;
     if (!node) return;
     const obs = new IntersectionObserver(
@@ -32,7 +36,7 @@ export default function Reveal({
     );
     obs.observe(node);
     return () => obs.disconnect();
-  }, [once]);
+  }, [once, imediato]);
 
   return (
     <Tag

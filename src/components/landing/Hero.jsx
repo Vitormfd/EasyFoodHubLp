@@ -37,28 +37,28 @@ export default function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8">
         {/* Texto */}
         <div className="flex flex-col items-start gap-7">
-          <Reveal>
+          <Reveal imediato>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-soft" />
               {pagina.selo || "Tudo o que seu negócio de alimentação precisa em um só lugar"}
             </span>
           </Reveal>
 
-          <Reveal delay={80}>
+          <Reveal imediato delay={80}>
             <h1 className="font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.5rem]">
               {pagina.h1 ? pagina.h1[0] : "Pedidos, atendimento e gestão."}{" "}
               <span className="gradient-text-saffron">{pagina.h1 ? pagina.h1[1] : "Tudo em um só lugar."}</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={160}>
+          <Reveal imediato delay={160}>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
               {pagina.sub ||
                 "Gerencie seu restaurante, hamburgueria, pizzaria ou delivery com cardápio digital, controle de pedidos, mesas, delivery e automação pelo WhatsApp."}
             </p>
           </Reveal>
 
-          <Reveal delay={240} className="flex flex-col gap-3 sm:flex-row">
+          <Reveal imediato delay={240} className="flex flex-col gap-3 sm:flex-row">
             <CTAButton size="lg" className="group" cadastro>
               Testar 7 dias grátis
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -69,11 +69,11 @@ export default function Hero() {
             </CTAButton>
           </Reveal>
 
-          <Reveal delay={280}>
+          <Reveal imediato delay={280}>
             <p className="-mt-3 text-sm font-medium text-foreground/70">{OFERTA_TESTE}</p>
           </Reveal>
 
-          <Reveal delay={320}>
+          <Reveal imediato delay={320}>
             <ul className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2">
               {trustItems.map(({ icon: Icon, label }) => (
                 <li key={label} className="flex items-center gap-2 text-sm font-medium text-foreground/70">
@@ -88,7 +88,7 @@ export default function Hero() {
         </div>
 
         {/* Mockup */}
-        <Reveal delay={200} className="relative">
+        <Reveal imediato delay={200} className="relative">
           <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-primary/15 via-accent/10 to-transparent blur-2xl" />
           <div className="animate-float-slow">
             <BrowserMockup

@@ -73,7 +73,9 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const json = (v) => JSON.stringify(v).replace(/</g, "\\u003c");
 const IMAGEM = "https://media.base44.com/images/public/6a832095abecdbaa647e64a8/393968cb5_image.png";
 
-const nichos = paginas.map((p) => ({ label: p.label, titulo: p.rodape, href: `/${p.slug}` }));
+// Páginas de anúncio ficam fora do rodapé, do sitemap e do Google (noindex).
+const organicas = paginas.filter((p) => !p.anuncio);
+const nichos = organicas.map((p) => ({ label: p.label, titulo: p.rodape, href: `/${p.slug}` }));
 
 function html(p) {
   const url = `${SITE}/${p.slug}`;
@@ -117,7 +119,7 @@ function html(p) {
 <title>${esc(p.titulo)}</title>
 <meta name="description" content="${esc(p.descricao)}">
 <link rel="canonical" href="${url}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="${p.anuncio ? "noindex, follow" : "index, follow"}">
 <meta name="theme-color" content="#FF5A1F">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="website">
@@ -158,7 +160,7 @@ writeFileSync(
   join(saida, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${paginas.map((p) => `  <url><loc>${SITE}/${p.slug}</loc><lastmod>${hoje}</lastmod><priority>${p.principal ? "1.0" : "0.8"}</priority></url>`).join("\n")}
+${organicas.map((p) => `  <url><loc>${SITE}/${p.slug}</loc><lastmod>${hoje}</lastmod><priority>${p.principal ? "1.0" : "0.8"}</priority></url>`).join("\n")}
 </urlset>
 `,
 );

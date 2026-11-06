@@ -155,4 +155,32 @@ export const paginas = [
       { q: "Tem pagamento online?", a: "Tem. O cliente pode pagar por Pix na hora do pedido, com confirmação automática." },
     ],
   },
+  {
+    // Página só para anúncios (gancho da comissão): fora do Google, do sitemap e do rodapé.
+    slug: "cardapio-sem-comissao",
+    anuncio: true,
+    rodape: "Cardápio sem comissão",
+    label: "Sem comissão",
+    titulo: "Cardápio Digital sem Comissão por Pedido | Easy Food Hub",
+    descricao:
+      "Seu cardápio digital com link próprio, ao lado do aplicativo de delivery. Pedido direto no painel, taxa por bairro e Pix. R$ 199/mês, sem comissão por pedido.",
+    selo: "Cardápio digital próprio",
+    h1: ["Seu cardápio digital,", "sem comissão por pedido."],
+    sub: "O cliente pede pelo seu link e o pedido cai direto no seu painel, com taxa por bairro, Pix confirmado sozinho e acompanhamento do pedido. Funciona ao lado do aplicativo de delivery.",
+    whatsapp: "Olá! Vi o anúncio e quero conhecer o Easy Food Hub.",
+    dores: [
+      "Comissão em cada pedido que passa pelo aplicativo",
+      "Cliente da casa sem um link próprio para pedir",
+      "Pedido do WhatsApp anotado no papel",
+      "Taxa de entrega calculada de cabeça",
+      "Comprovante de Pix conferido um por um",
+      "Cliente perguntando se o pedido já saiu",
+      "Cardápio em foto ou PDF que não recebe pedido",
+      "Mensalidade que sobe quando você vende mais",
+    ],
+    faq: [
+      { q: "O Easy Food Hub cobra comissão por pedido?", a: "Não. A mensalidade é fixa, R$ 199 por mês, sem comissão e sem limite de pedidos. Se você usar o Pix online, as taxas do Mercado Pago são cobradas na sua conta de lá." },
+      { q: "Preciso sair do aplicativo de delivery?", a: "Não. O cardápio digital funciona ao lado do aplicativo: você divulga o seu link para os clientes que já pedem com você." },
+    ],
+  },
 ];
